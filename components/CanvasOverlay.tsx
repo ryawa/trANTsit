@@ -241,7 +241,15 @@ export default function CanvasOverlay({
         ctx.shadowBlur = 10;
         ctx.beginPath();
         ctx.arc(food.x, food.y, food.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "#4ade80";
+        if (food.type === "hospital") {
+          ctx.fillStyle = "#2168d1";
+        } else if (food.type === "shop") {
+          ctx.fillStyle = "#21d1b4";
+        } else if (food.type === "school") {
+          ctx.fillStyle = "#c8d121";
+        } else if (food.type === "restaurant") {
+          ctx.fillStyle = "#39d121";
+        }
         ctx.fill();
         ctx.shadowBlur = 0;
       }

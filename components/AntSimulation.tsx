@@ -187,7 +187,7 @@ export default function AntSimulation() {
     ants: Ant[];
     foodPheromoneMap: number[][];
     homePheromoneMap: number[][];
-    foodSources: { x: number; y: number; radius: number }[];
+    foodSources: { x: number; y: number; radius: number; type: string }[];
     nests: { x: number; y: number; radius: number }[];
     foodCollected: number;
   }>({
@@ -350,6 +350,7 @@ export default function AntSimulation() {
                     x: x,
                     y: y,
                     radius: 8,
+                    type: type,
                   });
                 }}
                 simulationRunning={isRunning}
@@ -530,10 +531,6 @@ export default function AntSimulation() {
                     <div className="flex items-center gap-1">
                       <div className="w-3 h-3 rounded-full bg-red-400"></div>
                       <span className="text-xs">Nests</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                      <span className="text-xs">Food</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <div className="w-3 h-3 rounded-full bg-purple-400"></div>
