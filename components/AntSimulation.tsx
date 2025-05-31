@@ -272,8 +272,8 @@ export default function AntSimulation() {
       }
     }
   }, [
-    simulationRef.current.nests,
-    simulationRef.current.foodSources,
+    simulationRef.current.nests.length,
+    simulationRef.current.foodSources.length,
     antCount,
   ]);
 
