@@ -554,6 +554,8 @@ export default function AntSimulation() {
                     setEvaporationRate(Config.INITIAL_EVAPORATION_RATE);
                     setDiffusionRate(Config.INITIAL_DIFFUSION_RATE);
                     setRandomFactor(Config.INITIAL_RANDOM_FACTOR);
+                    simulationRef.current.homePheromoneMap = [];
+                    simulationRef.current.foodPheromoneMap = [];
                   }}
                   variant="outline"
                   className="flex-1"
