@@ -550,12 +550,21 @@ export default function AntSimulation() {
                 </Button>
                 <Button
                   onClick={() => {
+                    setIsRunning(false);
                     setAntCount(Config.INITIAL_ANT_COUNT);
                     setEvaporationRate(Config.INITIAL_EVAPORATION_RATE);
                     setDiffusionRate(Config.INITIAL_DIFFUSION_RATE);
                     setRandomFactor(Config.INITIAL_RANDOM_FACTOR);
-                    simulationRef.current.homePheromoneMap = [];
-                    simulationRef.current.foodPheromoneMap = [];
+                    simulationRef.current.homePheromoneMap = Array(
+                      Config.CANVAS_HEIGHT
+                    )
+                      .fill(0)
+                      .map(() => Array(Config.CANVAS_WIDTH).fill(0));
+                    simulationRef.current.foodPheromoneMap = Array(
+                      Config.CANVAS_HEIGHT
+                    )
+                      .fill(0)
+                      .map(() => Array(Config.CANVAS_WIDTH).fill(0));
                   }}
                   variant="outline"
                   className="flex-1"
