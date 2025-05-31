@@ -211,30 +211,30 @@ export default function CanvasOverlay({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "rgba(26, 26, 46, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      if (isRunning) {
-        // Draw pheromones
-        const imageData = ctx.createImageData(CANVAS_WIDTH, CANVAS_HEIGHT);
-        const data = imageData.data;
+      // if (isRunning) {
+      // Draw pheromones
+      const imageData = ctx.createImageData(CANVAS_WIDTH, CANVAS_HEIGHT);
+      const data = imageData.data;
 
-        for (let y = 0; y < CANVAS_HEIGHT; y++) {
-          for (let x = 0; x < CANVAS_WIDTH; x++) {
-            const index = (y * CANVAS_WIDTH + x) * 4;
-            const foodPheromone = simulationRef.current.foodPheromoneMap[y][x];
-            const homePheromone = simulationRef.current.homePheromoneMap[y][x];
-            const total = foodPheromone + homePheromone;
+      for (let y = 0; y < CANVAS_HEIGHT; y++) {
+        for (let x = 0; x < CANVAS_WIDTH; x++) {
+          const index = (y * CANVAS_WIDTH + x) * 4;
+          const foodPheromone = simulationRef.current.foodPheromoneMap[y][x];
+          const homePheromone = simulationRef.current.homePheromoneMap[y][x];
+          const total = foodPheromone + homePheromone;
 
-            if (total > 0.1) {
-              const intensity = Math.min(255, total * 150);
-              data[index] = intensity * 0.9;
-              data[index + 1] = intensity * 0.3;
-              data[index + 2] = intensity;
-              data[index + 3] = Math.min(200, intensity * 1.2);
-            }
+          if (total > 0.1) {
+            const intensity = Math.min(255, total * 150);
+            data[index] = intensity * 0.9;
+            data[index + 1] = intensity * 0.3;
+            data[index + 2] = intensity;
+            data[index + 3] = Math.min(200, intensity * 1.2);
           }
         }
-
-        ctx.putImageData(imageData, 0, 0);
       }
+
+      ctx.putImageData(imageData, 0, 0);
+      // }
       // Always draw food sources
       for (const food of simulationRef.current.foodSources) {
         ctx.shadowColor = "#4ade80";
