@@ -546,7 +546,7 @@ export default function AntSimulation() {
                   onClick={() => setIsRunning(!isRunning)}
                   className="flex-1"
                 >
-                  {isRunning ? "Pause" : "Resume"}
+                  {isRunning ? "Pause" : "Play"}
                 </Button>
                 <Button
                   onClick={() => {
