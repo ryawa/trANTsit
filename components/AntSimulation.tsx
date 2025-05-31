@@ -203,42 +203,42 @@ export default function AntSimulation() {
     foodCollected: 0,
   });
 
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isRunning) {
-      timer = setTimeout(() => {
-        setIsRunning(false);
-        // Hide ants and overwrite pheromones with full white path
-        simulationRef.current.ants = []; // Stop rendering ants
-        const canvas = document.querySelector("canvas");
-        console.log(canvas);
-        if (canvas) {
-          const ctx = canvas.getContext("2d");
-          if (ctx) {
-            const imageData = ctx.getImageData(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            );
-            const data = imageData.data;
-            for (let i = 0; i < data.length; i += 4) {
-              // Approx match to purple pher
-              // omones (keep logic if needed)
-              if (data[i] > 100 && data[i + 2] > 100) {
-                data[i] = 255; // Red
-                data[i + 1] = 255; // Green
-                data[i + 2] = 255; // Blue
-                data[i + 3] = 255; // Full opacity
-              }
-            }
-            ctx.putImageData(imageData, 0, 0);
-          }
-        }
-      }, 1000);
-    }
-    return () => clearTimeout(timer);
-  }, [isRunning]);
+  //   useEffect(() => {
+  //     let timer: NodeJS.Timeout;
+  //     if (isRunning) {
+  //       timer = setTimeout(() => {
+  //         setIsRunning(false);
+  //         // Hide ants and overwrite pheromones with full white path
+  //         simulationRef.current.ants = []; // Stop rendering ants
+  //         const canvas = document.querySelector("canvas");
+  //         console.log(canvas);
+  //         if (canvas) {
+  //           const ctx = canvas.getContext("2d");
+  //           if (ctx) {
+  //             const imageData = ctx.getImageData(
+  //               0,
+  //               0,
+  //               canvas.width,
+  //               canvas.height
+  //             );
+  //             const data = imageData.data;
+  //             for (let i = 0; i < data.length; i += 4) {
+  //               // Approx match to purple pher
+  //               // omones (keep logic if needed)
+  //               if (data[i] > 100 && data[i + 2] > 100) {
+  //                 data[i] = 255; // Red
+  //                 data[i + 1] = 255; // Green
+  //                 data[i + 2] = 255; // Blue
+  //                 data[i + 3] = 255; // Full opacity
+  //               }
+  //             }
+  //             ctx.putImageData(imageData, 0, 0);
+  //           }
+  //         }
+  //       }, 1000);
+  //     }
+  //     return () => clearTimeout(timer);
+  //   }, [isRunning]);
 
   // Initialize simulation
   useEffect(() => {
