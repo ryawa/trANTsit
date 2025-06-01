@@ -312,10 +312,10 @@ export default function AntSimulation() {
                 width: Config.CANVAS_WIDTH,
                 height: Config.CANVAS_HEIGHT,
               }}
-              zoomControl={true}
-              scrollWheelZoom={true}
-              doubleClickZoom={true}
-              dragging={true}
+              zoomControl={false}
+              scrollWheelZoom={false}
+              doubleClickZoom={false}
+              dragging={false}
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
